@@ -45,6 +45,58 @@ const toggleNavbar = function () {
 
 addEventOnElements(navTogglers, "click", toggleNavbar);
 
+// cerrar el menú móvil al pulsar un enlace
+addEventOnElements(document.querySelectorAll("[data-nav-link]"), "click", function () {
+  if (navbar.classList.contains("active")) toggleNavbar();
+});
+
+
+
+/**
+ * RESERVATION FORM -> WhatsApp (o email si no hay WhatsApp)
+ */
+
+const reservationForm = document.querySelector("[data-reservation-form]");
+
+if (reservationForm) {
+  const dateInput = reservationForm.querySelector("input[type='date']");
+  if (dateInput) dateInput.min = new Date().toISOString().slice(0, 10);
+
+  reservationForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const data = new FormData(reservationForm);
+    const fecha = data.get("fecha") ? data.get("fecha").split("-").reverse().join("/") : "";
+    const lines = [
+      "Hola " + reservationForm.dataset.nombre + ", quiero reservar mesa:",
+      "• Nombre: " + data.get("nombre"),
+      "• Teléfono: " + data.get("telefono"),
+      "• Personas: " + data.get("personas"),
+      "• Fecha: " + fecha,
+      "• Hora: " + data.get("hora")
+    ];
+    if (data.get("mensaje")) lines.push("• Comentarios: " + data.get("mensaje"));
+    const text = lines.join("\n");
+
+    const whatsapp = reservationForm.dataset.whatsapp;
+    const email = reservationForm.dataset.email;
+
+    if (whatsapp) {
+      window.open("https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(text), "_blank");
+    } else if (email) {
+      window.location.href = "mailto:" + email + "?subject=" + encodeURIComponent("Reserva de mesa") + "&body=" + encodeURIComponent(text);
+    }
+
+    let status = reservationForm.querySelector(".form-status");
+    if (!status) {
+      status = document.createElement("p");
+      status.className = "form-status";
+      reservationForm.appendChild(status);
+    }
+    status.textContent = "¡Gracias! Envía el mensaje para confirmar tu reserva.";
+  });
+}
+
 
 
 /**

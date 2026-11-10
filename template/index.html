@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{nombre}} | {{hero.0.subtitulo}}</title>
+  <meta name="description" content="{{descripcion}}">
+  {{#if url}}<link rel="canonical" href="{{url}}">{{/if}}
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{nombre}}">
+  <meta property="og:description" content="{{descripcion}}">
+  {{#if url}}<meta property="og:image" content="{{url}}assets/images/{{hero.0.imagen}}">{{/if}}
+
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/custom.css">
+  <style>:root { --gold-crayola: {{colores.principal}}; }</style>
+
+  {{#each hero}}<link rel="preload" as="image" href="./assets/images/{{imagen}}">
+  {{/each}}
+
+  <script type="application/ld+json">{{{jsonld}}}</script>
+</head>
+
+<body id="top">
+
+  <!-- #PRELOADER -->
+  <div class="preload" data-preaload>
+    <div class="circle"></div>
+    <p class="text">{{nombre}}</p>
+  </div>
+
+
+  <!-- #TOP BAR -->
+  <div class="topbar">
+    <div class="container">
+
+      <a href="{{contacto.mapa}}" target="_blank" rel="noopener" class="topbar-item link">
+        <div class="icon">
+          <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+        </div>
+        <span class="span">{{contacto.direccion}}</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <div class="topbar-item item-2">
+        <div class="icon">
+          <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+        </div>
+        <span class="span">{{horario.resumen}}</span>
+      </div>
+
+      <a href="tel:{{telLink}}" class="topbar-item link">
+        <div class="icon">
+          <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+        </div>
+        <span class="span">{{contacto.telefono}}</span>
+      </a>
+
+      {{#if contacto.email}}
+      <div class="separator"></div>
+
+      <a href="mailto:{{contacto.email}}" class="topbar-item link">
+        <div class="icon">
+          <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+        </div>
+        <span class="span">{{contacto.email}}</span>
+      </a>
+      {{/if}}
+
+    </div>
+  </div>
+
+
+  <!-- #HEADER -->
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#top" class="logo">
+        {{#if logo}}<img src="./assets/images/{{logo}}" width="160" height="50" alt="{{nombre}} - Inicio">{{else}}<span class="logo-text">{{nombre}}</span>{{/if}}
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="close-btn" aria-label="cerrar menú" data-nav-toggler>
+          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <a href="#top" class="logo">
+          {{#if logo}}<img src="./assets/images/{{logo}}" width="160" height="50" alt="{{nombre}} - Inicio">{{else}}<span class="logo-text">{{nombre}}</span>{{/if}}
+        </a>
+
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <a href="#home" class="navbar-link hover-underline active" data-nav-link>
+              <div class="separator"></div>
+              <span class="span">Inicio</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="#menu" class="navbar-link hover-underline" data-nav-link>
+              <div class="separator"></div>
+              <span class="span">Carta</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="#about" class="navbar-link hover-underline" data-nav-link>
+              <div class="separator"></div>
+              <span class="span">Nosotros</span>
+            </a>
+          </li>
+          {{#if eventos.mostrar}}
+          <li class="navbar-item">
+            <a href="#events" class="navbar-link hover-underline" data-nav-link>
+              <div class="separator"></div>
+              <span class="span">Eventos</span>
+            </a>
+          </li>
+          {{/if}}
+          <li class="navbar-item">
+            <a href="#contact" class="navbar-link hover-underline" data-nav-link>
+              <div class="separator"></div>
+              <span class="span">Contacto</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="text-center">
+          <p class="headline-1 navbar-title">Visítanos</p>
+
+          <address class="body-4">{{contacto.direccion}}</address>
+
+          <p class="body-4 navbar-text">{{horario.resumen}}</p>
+
+          {{#if contacto.email}}<a href="mailto:{{contacto.email}}" class="body-4 sidebar-link">{{contacto.email}}</a>{{/if}}
+
+          <div class="separator"></div>
+
+          <p class="contact-label">Reservas</p>
+
+          <a href="tel:{{telLink}}" class="body-1 contact-number hover-underline">{{contacto.telefono}}</a>
+        </div>
+
+      </nav>
+
+      <a href="{{reservaHref}}" class="btn btn-secondary">
+        <span class="text text-1">Reservar mesa</span>
+        <span class="text text-2" aria-hidden="true">Reservar mesa</span>
+      </a>
+
+      <button class="nav-open-btn" aria-label="abrir menú" data-nav-toggler>
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+      </button>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+
+
+  <main>
+    <article>
+
+      <!-- #HERO -->
+      <section class="hero text-center" aria-label="inicio" id="home">
+
+        <ul class="hero-slider" data-hero-slider>
+          {{#each hero}}
+          <li class="slider-item{{#if @first}} active{{/if}}" data-hero-slider-item>
+
+            <div class="slider-bg">
+              <img src="./assets/images/{{imagen}}" width="1880" height="950" alt="" class="img-cover">
+            </div>
+
+            <p class="label-2 section-subtitle slider-reveal">{{subtitulo}}</p>
+
+            <h1 class="display-1 hero-title slider-reveal">{{titulo}}</h1>
+
+            <p class="body-2 hero-text slider-reveal">{{texto}}</p>
+
+            <a href="#menu" class="btn btn-primary slider-reveal">
+              <span class="text text-1">Ver la carta</span>
+              <span class="text text-2" aria-hidden="true">Ver la carta</span>
+            </a>
+
+          </li>
+          {{/each}}
+        </ul>
+
+        <button class="slider-btn prev" aria-label="anterior" data-prev-btn>
+          <ion-icon name="chevron-back"></ion-icon>
+        </button>
+
+        <button class="slider-btn next" aria-label="siguiente" data-next-btn>
+          <ion-icon name="chevron-forward"></ion-icon>
+        </button>
+
+        <a href="{{reservaHref}}" class="hero-btn has-after">
+          <img src="./assets/images/hero-icon.png" width="48" height="48" alt="">
+          <span class="label-2 text-center span">Reservar mesa</span>
+        </a>
+
+      </section>
+
+
+      <!-- #SERVICE -->
+      <section class="section service bg-black-10 text-center" aria-label="servicios">
+        <div class="container">
+
+          <p class="section-subtitle label-2">{{servicios.subtitulo}}</p>
+
+          <h2 class="headline-1 section-title">{{servicios.titulo}}</h2>
+
+          <p class="section-text">{{servicios.texto}}</p>
+
+          <ul class="grid-list">
+            {{#each servicios.items}}
+            <li>
+              <div class="service-card">
+
+                <a href="#menu" class="has-before hover:shine">
+                  <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
+                    <img src="./assets/images/{{imagen}}" width="285" height="336" loading="lazy" alt="{{titulo}}"
+                      class="img-cover">
+                  </figure>
+                </a>
+
+                <div class="card-content">
+                  <h3 class="title-4 card-title">
+                    <a href="#menu">{{titulo}}</a>
+                  </h3>
+                  <a href="#menu" class="btn-text hover-underline label-2">Ver carta</a>
+                </div>
+
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+
+          <img src="./assets/images/shape-1.png" width="246" height="412" loading="lazy" alt=""
+            class="shape shape-1 move-anim">
+          <img src="./assets/images/shape-2.png" width="343" height="345" loading="lazy" alt=""
+            class="shape shape-2 move-anim">
+
+        </div>
+      </section>
+
+
+      <!-- #ABOUT -->
+      <section class="section about text-center" aria-labelledby="about-label" id="about">
+        <div class="container">
+
+          <div class="about-content">
+
+            <p class="label-2 section-subtitle" id="about-label">{{nosotros.subtitulo}}</p>
+
+            <h2 class="headline-1 section-title">{{nosotros.titulo}}</h2>
+
+            <p class="section-text">{{nosotros.texto}}</p>
+
+            <div class="contact-label">Reserva por teléfono</div>
+
+            <a href="tel:{{telLink}}" class="body-1 contact-number hover-underline">{{contacto.telefono}}</a>
+
+            <a href="{{reservaHref}}" class="btn btn-primary">
+              <span class="text text-1">Reservar</span>
+              <span class="text text-2" aria-hidden="true">Reservar</span>
+            </a>
+
+          </div>
+
+          <figure class="about-banner">
+
+            <img src="./assets/images/{{nosotros.imagen}}" width="570" height="570" loading="lazy" alt="{{nombre}}"
+              class="w-100" data-parallax-item data-parallax-speed="1">
+
+            {{#if nosotros.imagenPequena}}
+            <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
+              <img src="./assets/images/{{nosotros.imagenPequena}}" width="285" height="285" loading="lazy" alt=""
+                class="w-100">
+            </div>
+            {{/if}}
+
+            <div class="abs-img abs-img-2 has-before">
+              <img src="./assets/images/badge-2.png" width="133" height="134" loading="lazy" alt="">
+            </div>
+
+          </figure>
+
+          <img src="./assets/images/shape-3.png" width="197" height="194" loading="lazy" alt="" class="shape">
+
+        </div>
+      </section>
+
+
+      {{#if especial.mostrar}}
+      <!-- #SPECIAL DISH -->
+      <section class="special-dish text-center" aria-labelledby="dish-label">
+
+        <div class="special-dish-banner">
+          <img src="./assets/images/{{especial.imagen}}" width="940" height="900" loading="lazy" alt="{{especial.titulo}}"
+            class="img-cover">
+        </div>
+
+        <div class="special-dish-content bg-black-10">
+          <div class="container">
+
+            <img src="./assets/images/badge-1.png" width="28" height="41" loading="lazy" alt="" class="abs-img">
+
+            <p class="section-subtitle label-2" id="dish-label">{{especial.subtitulo}}</p>
+
+            <h2 class="headline-1 section-title">{{especial.titulo}}</h2>
+
+            <p class="section-text">{{especial.texto}}</p>
+
+            <div class="wrapper">
+              {{#if especial.precioAnterior}}<del class="del body-3">{{especial.precioAnterior}}</del>{{/if}}
+              <span class="span body-1">{{especial.precio}}</span>
+            </div>
+
+            <a href="#menu" class="btn btn-primary">
+              <span class="text text-1">Ver toda la carta</span>
+              <span class="text text-2" aria-hidden="true">Ver toda la carta</span>
+            </a>
+
+          </div>
+        </div>
+
+        <img src="./assets/images/shape-4.png" width="179" height="359" loading="lazy" alt="" class="shape shape-1">
+        <img src="./assets/images/shape-9.png" width="351" height="462" loading="lazy" alt="" class="shape shape-2">
+
+      </section>
+      {{/if}}
+
+
+      <!-- #MENU -->
+      <section class="section menu" aria-labelledby="menu-label" id="menu">
+        <div class="container">
+
+          <p class="section-subtitle text-center label-2">{{carta.subtitulo}}</p>
+
+          <h2 class="headline-1 section-title text-center" id="menu-label">{{carta.titulo}}</h2>
+
+          <ul class="grid-list">
+            {{#each carta.platos}}
+            <li>
+              <div class="menu-card hover:card">
+
+                {{#if imagen}}
+                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
+                  <img src="./assets/images/{{imagen}}" width="100" height="100" loading="lazy" alt="{{nombre}}"
+                    class="img-cover">
+                </figure>
+                {{/if}}
+
+                <div>
+                  <div class="title-wrapper">
+                    <h3 class="title-3">
+                      <span class="card-title">{{nombre}}</span>
+                    </h3>
+
+                    {{#if etiqueta}}<span class="badge label-1">{{etiqueta}}</span>{{/if}}
+
+                    <span class="span title-2">{{precio}}</span>
+                  </div>
+
+                  <p class="card-text label-1">{{descripcion}}</p>
+                </div>
+
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+
+          {{#if carta.nota}}<p class="menu-text text-center">{{carta.nota}}</p>{{/if}}
+
+          {{#if carta.enlaceCartaCompleta}}
+          <a href="{{carta.enlaceCartaCompleta}}" target="_blank" rel="noopener" class="btn btn-primary">
+            <span class="text text-1">Ver carta completa</span>
+            <span class="text text-2" aria-hidden="true">Ver carta completa</span>
+          </a>
+          {{/if}}
+
+          <img src="./assets/images/shape-5.png" width="921" height="1036" loading="lazy" alt=""
+            class="shape shape-2 move-anim">
+          <img src="./assets/images/shape-6.png" width="343" height="345" loading="lazy" alt=""
+            class="shape shape-3 move-anim">
+
+        </div>
+      </section>
+
+
+      {{#if testimonio.mostrar}}
+      <!-- #TESTIMONIALS -->
+      <section class="section testi text-center has-bg-image"
+        style="background-image: url('./assets/images/testimonial-bg.jpg')" aria-label="opiniones">
+        <div class="container">
+
+          <div class="quote">”</div>
+
+          <p class="headline-2 testi-text">{{testimonio.texto}}</p>
+
+          <div class="wrapper">
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <div class="separator"></div>
+          </div>
+
+          <div class="profile">
+            {{#if testimonio.imagen}}<img src="./assets/images/{{testimonio.imagen}}" width="100" height="100" loading="lazy" alt="{{testimonio.autor}}" class="img">{{/if}}
+            <p class="label-2 profile-name">{{testimonio.autor}}</p>
+          </div>
+
+        </div>
+      </section>
+      {{/if}}
+
+
+      <!-- #RESERVATION / CONTACT -->
+      <section class="reservation" id="contact">
+        <div class="container">
+
+          <div class="form reservation-form bg-black-10{{#unless reservas.mostrar}} solo-contacto{{/unless}}">
+
+            {{#if reservas.mostrar}}
+            <form class="form-left" id="reservation" data-reservation-form
+              data-whatsapp="{{whatsappNum}}" data-email="{{contacto.email}}" data-nombre="{{nombre}}">
+
+              <h2 class="headline-1 text-center">{{reservas.titulo}}</h2>
+
+              <p class="form-text text-center">
+                Llámanos al <a href="tel:{{telLink}}" class="link">{{contacto.telefono}}</a>
+                o rellena el formulario{{#if whatsappNum}} y te contestamos por WhatsApp{{/if}}
+              </p>
+
+              <div class="input-wrapper">
+                <input type="text" name="nombre" placeholder="Tu nombre" autocomplete="name" class="input-field" required>
+                <input type="tel" name="telefono" placeholder="Teléfono" autocomplete="tel" class="input-field" required>
+              </div>
+
+              <div class="input-wrapper">
+
+                <div class="icon-wrapper">
+                  <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                  <select name="personas" class="input-field" aria-label="Personas">
+                    {{#each personas}}<option value="{{n}}"{{#if selected}} selected{{/if}}>{{n}} {{#if uno}}persona{{else}}personas{{/if}}</option>
+                    {{/each}}
+                  </select>
+                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+                </div>
+
+                <div class="icon-wrapper">
+                  <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
+                  <input type="date" name="fecha" class="input-field" aria-label="Fecha" required>
+                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+                </div>
+
+                <div class="icon-wrapper">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                  <select name="hora" class="input-field" aria-label="Hora">
+                    {{#each reservas.horas}}<option value="{{.}}">{{.}}</option>
+                    {{/each}}
+                  </select>
+                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+                </div>
+
+              </div>
+
+              <textarea name="mensaje" placeholder="Comentarios (alergias, trona, celebración...)" autocomplete="off" class="input-field"></textarea>
+
+              <button type="submit" class="btn btn-secondary">
+                <span class="text text-1">Solicitar reserva</span>
+                <span class="text text-2" aria-hidden="true">Solicitar reserva</span>
+              </button>
+
+            </form>
+            {{/if}}
+
+            <div class="form-right text-center" style="background-image: url('./assets/images/form-pattern.png')">
+
+              <h2 class="headline-1 text-center">Contacto</h2>
+
+              <p class="contact-label">Reservas</p>
+
+              <a href="tel:{{telLink}}" class="body-1 contact-number hover-underline">{{contacto.telefono}}</a>
+
+              <div class="separator"></div>
+
+              <p class="contact-label">Dirección</p>
+
+              <address class="body-4">
+                <a href="{{contacto.mapa}}" target="_blank" rel="noopener" class="hover-underline">{{contacto.direccion}}</a>
+              </address>
+
+              {{#each horario.turnos}}
+              <p class="contact-label">{{titulo}}</p>
+              <p class="body-4">{{dias}}<br>{{horas}}</p>
+              {{/each}}
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- #FEATURES -->
+      <section class="section features text-center" aria-label="ventajas">
+        <div class="container">
+
+          <p class="section-subtitle label-2">{{ventajas.subtitulo}}</p>
+
+          <h2 class="headline-1 section-title">{{ventajas.titulo}}</h2>
+
+          <ul class="grid-list">
+            {{#each ventajas.items}}
+            <li class="feature-item">
+              <div class="feature-card">
+                <div class="card-icon">
+                  <img src="./assets/images/{{icono}}" width="100" height="80" loading="lazy" alt="">
+                </div>
+                <h3 class="title-2 card-title">{{titulo}}</h3>
+                <p class="label-1 card-text">{{texto}}</p>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+
+          <img src="./assets/images/shape-7.png" width="208" height="178" loading="lazy" alt="" class="shape shape-1">
+          <img src="./assets/images/shape-8.png" width="120" height="115" loading="lazy" alt="" class="shape shape-2">
+
+        </div>
+      </section>
+
+
+      {{#if eventos.mostrar}}
+      <!-- #EVENT -->
+      <section class="section event bg-black-10" aria-label="eventos" id="events">
+        <div class="container">
+
+          <p class="section-subtitle label-2 text-center">{{eventos.subtitulo}}</p>
+
+          <h2 class="section-title headline-1 text-center">{{eventos.titulo}}</h2>
+
+          <ul class="grid-list">
+            {{#each eventos.items}}
+            <li>
+              <div class="event-card has-before hover:shine">
+
+                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
+                  <img src="./assets/images/{{imagen}}" width="350" height="450" loading="lazy" alt="{{titulo}}"
+                    class="img-cover">
+                  <time class="publish-date label-2" datetime="{{fecha}}">{{fechaTexto}}</time>
+                </div>
+
+                <div class="card-content">
+                  <p class="card-subtitle label-2 text-center">{{categoria}}</p>
+                  <h3 class="card-title title-2 text-center">{{titulo}}</h3>
+                </div>
+
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+
+        </div>
+      </section>
+      {{/if}}
+
+    </article>
+  </main>
+
+
+  <!-- #FOOTER -->
+  <footer class="footer section has-bg-image text-center"
+    style="background-image: url('./assets/images/footer-bg.jpg')">
+    <div class="container">
+
+      <div class="footer-top grid-list">
+
+        <div class="footer-brand has-before has-after">
+
+          <a href="#top" class="logo">
+            {{#if logo}}<img src="./assets/images/{{logo}}" width="160" height="50" loading="lazy" alt="{{nombre}}">{{else}}<span class="logo-text">{{nombre}}</span>{{/if}}
+          </a>
+
+          <address class="body-4">{{contacto.direccion}}</address>
+
+          {{#if contacto.email}}<a href="mailto:{{contacto.email}}" class="body-4 contact-link">{{contacto.email}}</a>{{/if}}
+
+          <a href="tel:{{telLink}}" class="body-4 contact-link">Reservas: {{contacto.telefono}}</a>
+
+          <p class="body-4">{{horario.resumen}}</p>
+
+          {{#if newsletter.mostrar}}
+          <div class="wrapper">
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <div class="separator"></div>
+          </div>
+
+          <p class="title-1">{{newsletter.titulo}}</p>
+
+          <p class="label-1">{{newsletter.texto}}</p>
+
+          <form action="mailto:{{contacto.email}}" method="post" enctype="text/plain" class="input-wrapper">
+            <div class="icon-wrapper">
+              <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+              <input type="email" name="email" placeholder="Tu email" autocomplete="email" class="input-field" required>
+            </div>
+            <button type="submit" class="btn btn-secondary">
+              <span class="text text-1">Suscribirme</span>
+              <span class="text text-2" aria-hidden="true">Suscribirme</span>
+            </button>
+          </form>
+          {{/if}}
+
+        </div>
+
+        <ul class="footer-list">
+          <li><a href="#home" class="label-2 footer-link hover-underline">Inicio</a></li>
+          <li><a href="#menu" class="label-2 footer-link hover-underline">Carta</a></li>
+          <li><a href="#about" class="label-2 footer-link hover-underline">Nosotros</a></li>
+          {{#if eventos.mostrar}}<li><a href="#events" class="label-2 footer-link hover-underline">Eventos</a></li>{{/if}}
+          <li><a href="#contact" class="label-2 footer-link hover-underline">Contacto</a></li>
+        </ul>
+
+        <ul class="footer-list">
+          {{#each redes}}
+          <li><a href="{{url}}" target="_blank" rel="noopener" class="label-2 footer-link hover-underline">{{nombre}}</a></li>
+          {{/each}}
+          <li><a href="{{contacto.mapa}}" target="_blank" rel="noopener" class="label-2 footer-link hover-underline">Cómo llegar</a></li>
+        </ul>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">
+          &copy; {{anio}} {{nombre}}. Todos los derechos reservados{{#if webPor.nombre}} | Web por
+          {{#if webPor.url}}<a href="{{webPor.url}}" target="_blank" rel="noopener" class="link">{{webPor.nombre}}</a>{{else}}{{webPor.nombre}}{{/if}}{{/if}}
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- #BACK TO TOP -->
+  <a href="#top" class="back-top-btn" aria-label="volver arriba" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+  </a>
+
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
