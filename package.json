@@ -1,0 +1,13 @@
+{
+  "name": "grilli-plantilla-clientes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plantilla de webs para restaurantes: un config.json por cliente",
+  "scripts": {
+    "nuevo": "node nuevo-cliente.js",
+    "build": "node build.js",
+    "build:todos": "node build.js --todos",
+    "servir": "node servir.js"
+  },
+  "license": "MIT"
+}

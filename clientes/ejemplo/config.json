@@ -1,0 +1,144 @@
+{
+  "nombre": "Casa Lucía",
+  "descripcion": "Restaurante de cocina mediterránea casera en el centro de Madrid. Reserva tu mesa online o por WhatsApp.",
+  "url": "",
+  "logo": "",
+
+  "colores": {
+    "principal": "#e4c590"
+  },
+
+  "contacto": {
+    "direccion": "Calle Mayor 12, 28013 Madrid",
+    "telefono": "+34 910 000 000",
+    "whatsapp": "+34 600 000 000",
+    "email": "reservas@casalucia.es",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Mayor+12+Madrid"
+  },
+
+  "horario": {
+    "resumen": "Todos los días: 13:00 – 23:30",
+    "turnos": [
+      { "titulo": "Comidas", "dias": "Lunes a domingo", "horas": "13:00 – 16:00" },
+      { "titulo": "Cenas", "dias": "Lunes a domingo", "horas": "20:00 – 23:30" }
+    ]
+  },
+
+  "hero": [
+    {
+      "subtitulo": "Tradición y producto",
+      "titulo": "Cocina casera\ncon alma mediterránea",
+      "texto": "Ven en familia y disfruta de los sabores de siempre",
+      "imagen": "hero-slider-1.jpg"
+    },
+    {
+      "subtitulo": "Una experiencia única",
+      "titulo": "Sabores inspirados\nen cada estación",
+      "texto": "Producto de temporada directo del mercado",
+      "imagen": "hero-slider-2.jpg"
+    },
+    {
+      "subtitulo": "Desde 1987",
+      "titulo": "Cada plato\ncuenta una historia",
+      "texto": "Recetas de la abuela Lucía, hechas con cariño",
+      "imagen": "hero-slider-3.jpg"
+    }
+  ],
+
+  "servicios": {
+    "subtitulo": "Para todos los momentos",
+    "titulo": "Lo que ofrecemos",
+    "texto": "Desde el desayuno hasta la sobremesa, en Casa Lucía cocinamos cada día con producto fresco y de proximidad.",
+    "items": [
+      { "titulo": "Desayunos", "imagen": "service-1.jpg" },
+      { "titulo": "Entrantes", "imagen": "service-2.jpg" },
+      { "titulo": "Bebidas", "imagen": "service-3.jpg" }
+    ]
+  },
+
+  "nosotros": {
+    "subtitulo": "Nuestra historia",
+    "titulo": "Una familia,\nuna cocina",
+    "texto": "Casa Lucía abrió sus puertas en 1987 como una pequeña casa de comidas. Hoy, la segunda generación mantiene las recetas de siempre con el mismo producto de mercado y el trato cercano que nos ha hecho parte del barrio.",
+    "imagen": "about-banner.jpg",
+    "imagenPequena": "about-abs-image.jpg"
+  },
+
+  "especial": {
+    "mostrar": true,
+    "subtitulo": "Plato de la casa",
+    "titulo": "Arroz meloso de bogavante",
+    "texto": "Nuestro plato estrella: arroz bomba, fumet casero y bogavante fresco. Mínimo 2 personas.",
+    "precioAnterior": "",
+    "precio": "28 € / pers.",
+    "imagen": "special-dish-banner.jpg"
+  },
+
+  "carta": {
+    "subtitulo": "Selección especial",
+    "titulo": "Nuestra carta",
+    "nota": "Menú del día de lunes a viernes por 15,90 €",
+    "enlaceCartaCompleta": "",
+    "platos": [
+      { "nombre": "Ensalada griega", "etiqueta": "Temporada", "precio": "12,50 €", "descripcion": "Tomate, pimiento verde, pepino, cebolla, aceitunas y queso feta.", "imagen": "menu-1.png" },
+      { "nombre": "Lasaña casera", "etiqueta": "", "precio": "14,00 €", "descripcion": "Verduras, quesos, carne picada, salsa de tomate y especias.", "imagen": "menu-2.png" },
+      { "nombre": "Crema de calabaza", "etiqueta": "", "precio": "9,00 €", "descripcion": "Calabaza asada, jengibre y aceite de oliva virgen extra.", "imagen": "menu-3.png" },
+      { "nombre": "Entrecot de vaca", "etiqueta": "Nuevo", "precio": "24,00 €", "descripcion": "Vaca madurada a la brasa con patatas y pimientos.", "imagen": "menu-4.png" },
+      { "nombre": "Aceitunas rellenas", "etiqueta": "", "precio": "6,50 €", "descripcion": "Rellenas de anchoa y pimiento, aliñadas en casa.", "imagen": "menu-5.png" },
+      { "nombre": "Pescado del día", "etiqueta": "", "precio": "21,00 €", "descripcion": "Según mercado, a la plancha con verduras de temporada.", "imagen": "menu-6.png" }
+    ]
+  },
+
+  "testimonio": {
+    "mostrar": true,
+    "texto": "Comimos de maravilla y nos trataron como en casa. El arroz de bogavante es de los mejores que he probado.",
+    "autor": "María G. (reseña de Google)",
+    "imagen": "testi-avatar.jpg"
+  },
+
+  "reservas": {
+    "mostrar": true,
+    "titulo": "Reserva online",
+    "maxPersonas": 10,
+    "horas": ["13:00", "13:30", "14:00", "14:30", "15:00", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30"]
+  },
+
+  "ventajas": {
+    "subtitulo": "Por qué elegirnos",
+    "titulo": "Nuestro compromiso",
+    "items": [
+      { "titulo": "Producto fresco", "texto": "Compramos cada mañana en el mercado.", "icono": "features-icon-1.png" },
+      { "titulo": "Ambiente acogedor", "texto": "Un comedor tranquilo y familiar.", "icono": "features-icon-2.png" },
+      { "titulo": "Cocina con oficio", "texto": "Más de 30 años entre fogones.", "icono": "features-icon-3.png" },
+      { "titulo": "Eventos y grupos", "texto": "Celebraciones, comidas de empresa y más.", "icono": "features-icon-4.png" }
+    ]
+  },
+
+  "eventos": {
+    "mostrar": true,
+    "subtitulo": "Novedades",
+    "titulo": "Próximos eventos",
+    "items": [
+      { "fecha": "2026-12-12", "categoria": "Cata", "titulo": "Cata de vinos de Ribera con maridaje", "imagen": "event-1.jpg" },
+      { "fecha": "2026-12-24", "categoria": "Navidad", "titulo": "Menú especial de Nochebuena", "imagen": "event-2.jpg" },
+      { "fecha": "2026-12-31", "categoria": "Fin de año", "titulo": "Cena de Nochevieja con música en directo", "imagen": "event-3.jpg" }
+    ]
+  },
+
+  "newsletter": {
+    "mostrar": false,
+    "titulo": "Novedades y ofertas",
+    "texto": "Suscríbete y llévate un 10% de descuento."
+  },
+
+  "redes": [
+    { "nombre": "Instagram", "url": "https://instagram.com/" },
+    { "nombre": "Facebook", "url": "https://facebook.com/" },
+    { "nombre": "TripAdvisor", "url": "https://tripadvisor.es/" }
+  ],
+
+  "webPor": {
+    "nombre": "",
+    "url": ""
+  }
+}

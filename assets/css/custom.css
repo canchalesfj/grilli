@@ -1,0 +1,30 @@
+/* Añadidos para la plantilla de clientes (no tocar style.css) */
+
+/* Logo de texto cuando el cliente no tiene logo en imagen */
+.logo-text {
+  display: block;
+  font-family: var(--fontFamily-forum);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--white);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.header .logo-text { font-size: 2.6rem; }
+
+/* Solo bloque de contacto (sin formulario de reservas) */
+.reservation-form.solo-contacto { display: block; }
+
+/* Saltos de línea en títulos que vienen del config */
+.hero-title, .section-title { text-wrap: balance; }
+
+/* Mensaje tras enviar la reserva */
+.form-status {
+  margin-block-start: 15px;
+  text-align: center;
+  color: var(--gold-crayola);
+  font-size: var(--fontSize-label-1);
+}
+
+.footer-brand .logo { display: inline-block; }
